@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Buscar Entrenador{% endblock %}
+
+{% block content %}
+<h2>Buscar Entrenador</h2>
+
+<form method="get" class="mb-3">
+    <input type="text" name="q" class="form-control"
+           placeholder="Buscar por nombre o especialidad">
+</form>
+
+<ul class="list-group">
+    {% for entrenador in entrenadores %}
+        <li class="list-group-item">
+            {{ entrenador.nombre }} - {{ entrenador.especialidad }}
+        </li>
+    {% empty %}
+        <li class="list-group-item">Sin resultados</li>
+    {% endfor %}
+</ul>
+{% endblock %}

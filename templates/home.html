@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio | IberaGym{% endblock %}
+
+{% block content %}
+
+<div class="row align-items-center mb-5">
+    <div class="col-md-6">
+        <h1 class="fw-bold text-primary">Bienvenido a IberaGym</h1>
+        <p class="lead">
+            Centro de entrenamiento integral inspirado en la fuerza del Iberá.
+            Entrenamiento, salud y bienestar para toda la región.
+        </p>
+        <p>
+            💪 Planes personalizados <br>
+            🏋️ Entrenadores certificados <br>
+            🤝 Atención cercana y profesional
+        </p>
+    </div>
+    <div class="col-md-6 text-center">
+        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f"
+             class="img-fluid rounded shadow"
+             alt="Gimnasio">
+    </div>
+</div>
+
+<hr>
+
+<h3 class="mb-3">Gestión</h3>
+<div class="list-group mb-5">
+    <a href="{% url 'socio:lista' %}" class="list-group-item list-group-item-action">
+        Gestión de Socios
+    </a>
+    <a href="{% url 'entrenador:lista' %}" class="list-group-item list-group-item-action">
+        Gestión de Entrenadores
+    </a>
+    <a href="{% url 'plan:lista' %}" class="list-group-item list-group-item-action">
+        Gestión de Planes
+    </a>
+</div>
+
+<hr>
+
+<h3>📍 Ubicación</h3>
+<p>
+    Resistencia, Chaco <br>
+    Corrientes Capital <br>
+</p>
+
+<h3>📞 Contacto</h3>
+<p>
+    Tel: (362) 444-1234 <br>
+    Email: contacto@iberagym.com
+</p>
+
+{% endblock %}
