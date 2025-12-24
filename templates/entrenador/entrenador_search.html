@@ -3,20 +3,33 @@
 {% block title %}Buscar Entrenador{% endblock %}
 
 {% block content %}
-<h2>Buscar Entrenador</h2>
+<h2 class="mb-4">Buscar Entrenador</h2>
 
-<form method="get" class="mb-3">
-    <input type="text" name="q" class="form-control"
-           placeholder="Buscar por nombre o especialidad">
+<form method="get" class="mb-4">
+    <input type="text"
+           name="q"
+           class="form-control"
+           placeholder="Buscar por nombre"
+           value="{{ query }}">
 </form>
 
-<ul class="list-group">
+<div class="row">
     {% for entrenador in entrenadores %}
-        <li class="list-group-item">
-            {{ entrenador.nombre }} - {{ entrenador.especialidad }}
-        </li>
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ entrenador.nombre }} {{ entrenador.apellido }}
+                    </h5>
+                    <p class="card-text">
+                        <strong>Especialidad:</strong> {{ entrenador.especialidad }} <br>
+                        <strong>Telefono:</strong> {{ entrenador.telefono }}
+                    </p>
+                </div>
+            </div>
+        </div>
     {% empty %}
-        <li class="list-group-item">Sin resultados</li>
+        <p>No se encontraron entrenadores.</p>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}
