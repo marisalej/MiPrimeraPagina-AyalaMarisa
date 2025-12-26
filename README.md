@@ -41,4 +41,6 @@ Así fui armando mi proyecto:
 
 19) correr el servidor (python manage.py runserver)
 
-20) navegar por el proyecto IberaGym usando las funciones definidas listar, crear y buscar datos
+20) navegar por el proyecto IberaGym usando las funciones definidas para listar, crear y buscar datos
+
+21) luego de verificar que todo funciones hacer los commits y actualizar mi repositorio de GitHub (git push)
