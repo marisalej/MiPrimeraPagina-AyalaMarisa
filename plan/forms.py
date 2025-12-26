@@ -9,8 +9,7 @@ class PlanForm(forms.ModelForm):
             "descripcion": forms.Textarea(
                 attrs={
                     "class": "form-control",
-                    "rows": 5,   # cantidad de filas visibles
-                    #"placeholder": "Descripción del plan"
+                    "rows": 5,
                 }
             ),
             "nombre": forms.TextInput(attrs={"class": "form-control"}),
