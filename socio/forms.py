@@ -6,21 +6,16 @@ class SocioForm(forms.ModelForm):
         model = Socio
         fields = "__all__"
         widgets = {
+            "nombre": forms.TextInput(attrs={"class": "form-control"}),
+            "apellido": forms.TextInput(attrs={"class": "form-control"}),
+            "dni": forms.TextInput(attrs={"class": "form-control"}),
+            "email": forms.EmailInput(attrs={"class": "form-control"}),
             "fecha_alta": forms.DateInput(
                 attrs={
-                    "type": "date",
-                    "class": "form-control"
+                    "class": "form-control",
+                    "type": "date"
                 }
             ),
         }
 
 
-class SocioBusquedaForm(forms.Form):
-    q = forms.CharField(
-        label="Buscar",
-        required=False,
-        widget=forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Buscar por nombre o DNI'
-        })
-    )

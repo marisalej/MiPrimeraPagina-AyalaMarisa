@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Plan
-from .forms import PlanForm, PlanBusquedaForm
+from .forms import PlanForm
 
 def crear_plan(request):
     if request.method == "POST":
@@ -12,22 +12,6 @@ def crear_plan(request):
         form = PlanForm()
 
     return render(request, "plan/plan_form.html", {"form": form})
-
-
-# def buscar_plan(request):
-#     form = PlanBusquedaForm(request.GET or None)
-#     planes = Plan.objects.all()
-
-#     if form.is_valid():
-#         nombre = form.cleaned_data.get("nombre")
-#         if nombre:
-#             planes = planes.filter(nombre__icontains=nombre)
-
-#     return render(
-#         request,
-#         "plan/plan_search.html",
-#         {"form": form, "planes": planes}
-#     )
 
 
 def buscar_plan(request):

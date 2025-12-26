@@ -3,14 +3,38 @@
 {% block title %}Nuevo Plan{% endblock %}
 
 {% block content %}
-<h2>Alta de Plan</h2>
+<h2 class="mb-4">Alta de Plan</h2>
 
-<form method="post" class="mt-3">
+<form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Nombre</label>
+            {{ form.nombre }}
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Descripcion</label>
+            {{ form.descripcion }}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Precio</label>
+            {{ form.precio }}
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Duracion (meses)</label>
+            {{ form.duracion_meses }}
+        </div>
+    </div>
 
     <button type="submit" class="btn btn-success">
         Guardar
     </button>
+    <a href="{% url 'plan:lista' %}" class="btn btn-secondary ms-2">
+        Cancelar
+    </a>
 </form>
 {% endblock %}

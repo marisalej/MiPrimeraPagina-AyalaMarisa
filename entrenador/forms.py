@@ -4,15 +4,11 @@ from .models import Entrenador
 class EntrenadorForm(forms.ModelForm):
     class Meta:
         model = Entrenador
-        fields = '__all__'
+        fields = "__all__"
+        widgets = {
+            "nombre": forms.TextInput(attrs={"class": "form-control"}),
+            "apellido": forms.TextInput(attrs={"class": "form-control"}),
+            "especialidad": forms.TextInput(attrs={"class": "form-control"}),
+            "telefono": forms.TextInput(attrs={"class": "form-control"}),
+        }
 
-
-class EntrenadorBusquedaForm(forms.Form):
-    q = forms.CharField(
-        label='Buscar',
-        required=False,
-        widget=forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Buscar por nombre o especialidad'
-        })
-    )
