@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Eliminar Socio{% endblock %}
+
+{% block content %}
+<h2>Eliminar Socio</h2>
+
+<div class="alert alert-danger">
+    ¿Estás seguro que querés eliminar a
+    <strong>{{ socio.nombre }} {{ socio.apellido }}</strong>?
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'socio:lista' %}" class="btn btn-secondary">
+        Cancelar
+    </a>
+</form>
+{% endblock %}

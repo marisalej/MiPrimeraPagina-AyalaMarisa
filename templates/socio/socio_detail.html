@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Detalle Socio{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">
+    {{ socio.nombre }} {{ socio.apellido }}
+</h2>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+
+        {% if socio.foto %}
+            <div class="text-center mb-3">
+                <img src="{{ socio.foto.url }}"
+                     class="rounded shadow"
+                     width="200">
+            </div>
+
+        {% else %}
+            <p>Sin foto</p>
+
+
+        {% endif %}
+
+        <p><strong>DNI:</strong> {{ socio.dni }}</p>
+        <p><strong>Email:</strong> {{ socio.email }}</p>
+        <p><strong>Fecha de alta:</strong> {{ socio.fecha_alta|date:"d/m/Y" }}</p>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a href="{% url 'socio:editar' socio.id %}" class="btn btn-warning me-2">
+        Editar
+    </a>
+    <a href="{% url 'socio:eliminar' socio.id %}" class="btn btn-danger me-2">
+        Eliminar
+    </a>
+    <a href="{% url 'socio:lista' %}" class="btn btn-secondary">
+        Volver
+    </a>
+</div>
+{% endblock %}

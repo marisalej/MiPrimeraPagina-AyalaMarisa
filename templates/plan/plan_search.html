@@ -10,7 +10,7 @@
            name="q"
            class="form-control"
            placeholder="Buscar por nombre del plan"
-           value="{{ query }}">
+           value="{{ request.GET.q }}">
 </form>
 
 <div class="row">
@@ -28,7 +28,11 @@
             </div>
         </div>
     {% empty %}
-        <p>No se encontraron planes.</p>
+        <div class="col-12">
+            <div class="alert alert-warning">
+                No se encontraron planes.
+            </div>
+        </div>
     {% endfor %}
 </div>
 {% endblock %}

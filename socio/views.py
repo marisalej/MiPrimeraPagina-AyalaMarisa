@@ -1,41 +1,64 @@
 from django.db.models import Q
-from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import (
+    ListView,
+    CreateView,
+    DetailView,
+    UpdateView,
+    DeleteView
+)
 from .models import Socio
 from .forms import SocioForm
-
-def crear_socio(request):
-    if request.method == "POST":
-        form = SocioForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("socio:buscar")
-    else:
-        form = SocioForm()
-
-    return render(request, "socio/socio_form.html", {"form": form})
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-def buscar_socio(request):
-    query = request.GET.get("q")
-
-    socios = Socio.objects.all()
-
-    if query:
-        socios = socios.filter(
-            Q(nombre__icontains=query) |
-            Q(apellido__icontains=query) |
-            Q(dni__icontains=query)
-        )
-
-    return render(
-        request,
-        "socio/socio_search.html",
-        {"socios": socios}
-    )
+class SocioCreateView(LoginRequiredMixin, CreateView):
+    model = Socio
+    form_class = SocioForm
+    template_name = "socio/socio_form.html"
+    success_url = reverse_lazy("socio:lista")
 
 
-def lista_socios(request):
-    socios = Socio.objects.all()
-    return render(request, 'socio/socio_list.html', {
-        'socios': socios
-    })
+class SocioSearchView(LoginRequiredMixin, ListView):
+    model = Socio
+    template_name = "socio/socio_search.html"
+    context_object_name = "socios"
+
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        qs = Socio.objects.all()
+
+        if query:
+            qs = qs.filter(
+                Q(nombre__icontains=query) |
+                Q(apellido__icontains=query) |
+                Q(dni__icontains=query)
+            )
+        return qs
+
+
+class SocioListView(LoginRequiredMixin, ListView):
+    model = Socio
+    template_name = "socio/socio_list.html"
+    context_object_name = "socios"
+    ordering = ["apellido", "nombre"]
+
+
+class SocioDetailView(LoginRequiredMixin, DetailView):
+    model = Socio
+    template_name = "socio/socio_detail.html"
+    context_object_name = "socio"
+
+
+class SocioUpdateView(LoginRequiredMixin, UpdateView):
+    model = Socio
+    form_class = SocioForm
+    template_name = "socio/socio_form.html"
+    success_url = reverse_lazy("socio:lista")
+
+
+class SocioDeleteView(LoginRequiredMixin, DeleteView):
+    model = Socio
+    template_name = "socio/socio_confirm_delete.html"
+    success_url = reverse_lazy("socio:lista")
+

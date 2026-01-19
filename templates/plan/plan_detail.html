@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Detalle Plan{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">
+    {{ plan.nombre }}
+</h2>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <p><strong>Descripción:</strong> {{ plan.descripcion }}</p>
+        <p><strong>Precio:</strong> {{ plan.precio }}</p>
+        <p><strong>Duración (meses):</strong> {{ plan.duracion_meses }}</p>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a href="{% url 'plan:editar' plan.id %}"
+       class="btn btn-warning me-2">
+        Editar
+    </a>
+    <a href="{% url 'plan:eliminar' plan.id %}"
+       class="btn btn-danger me-2">
+        Eliminar
+    </a>
+    <a href="{% url 'plan:lista' %}"
+       class="btn btn-secondary">
+        Volver
+    </a>
+</div>
+{% endblock %}

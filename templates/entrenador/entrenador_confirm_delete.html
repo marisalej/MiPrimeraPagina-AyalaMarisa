@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Eliminar Entrenador{% endblock %}
+
+{% block content %}
+<h2>Eliminar Entrenador</h2>
+
+<div class="alert alert-danger">
+    ¿Estás seguro que querés eliminar a
+    <strong>{{ entrenador.nombre }} {{ entrenador.apellido }}</strong>?
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'entrenador:lista' %}" class="btn btn-secondary">
+        Cancelar
+    </a>
+</form>
+{% endblock %}

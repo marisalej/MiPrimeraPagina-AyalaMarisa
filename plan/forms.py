@@ -4,7 +4,13 @@ from .models import Plan
 class PlanForm(forms.ModelForm):
     class Meta:
         model = Plan
-        fields = "__all__"
+        fields = [
+            "nombre",
+            "descripcion",
+            "precio",
+            "duracion_meses",
+        ]
+        
         widgets = {
             "descripcion": forms.Textarea(
                 attrs={

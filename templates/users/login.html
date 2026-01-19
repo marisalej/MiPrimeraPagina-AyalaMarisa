@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <h4 class="text-center mb-4">Iniciar sesión</h4>
+
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        El nombre de usuario o la contraseña son incorrectos.
+                    </div>
+                {% endif %}
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label">Usuario</label>
+                        {{ form.username }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        {{ form.password }}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">
+                        Ingresar
+                    </button>
+                </form>
+                <div class="text-center mt-3">
+                    <small class="text-muted">¿No tenés cuenta?
+                    <a href="{% url 'users:register' %}" class="text-decoration-none text-primary fw-semibold">Registrate</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

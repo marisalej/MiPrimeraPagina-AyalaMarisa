@@ -4,7 +4,12 @@ from .models import Entrenador
 class EntrenadorForm(forms.ModelForm):
     class Meta:
         model = Entrenador
-        fields = "__all__"
+        fields = [
+            "nombre",
+            "apellido",
+            "especialidad",
+            "telefono",
+        ]
         widgets = {
             "nombre": forms.TextInput(attrs={"class": "form-control"}),
             "apellido": forms.TextInput(attrs={"class": "form-control"}),

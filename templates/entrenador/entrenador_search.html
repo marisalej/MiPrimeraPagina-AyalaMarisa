@@ -29,7 +29,11 @@
             </div>
         </div>
     {% empty %}
-        <p>No se encontraron entrenadores.</p>
+        <div class="col-12">
+            <div class="alert alert-warning">
+                No se encontraron entrenadores.
+            </div>
+        </div>
     {% endfor %}
 </div>
 {% endblock %}

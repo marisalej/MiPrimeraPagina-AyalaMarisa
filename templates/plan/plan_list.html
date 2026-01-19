@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Planes | IberaGym{% endblock %}
+{% block title %}Socios | IberaGym{% endblock %}
 
 {% block content %}
 <h2 class="mb-3">Listado de Planes</h2>
@@ -9,24 +9,41 @@
     Nuevo Plan
 </a>
 
-<table class="table table-striped">
+<table class="table table-striped table-hover align-middle">
     <thead>
         <tr>
-            <th>Nombre</th>
-            <th>Duración (meses)</th>
-            <th>Precio</th>
+            <th>Plan</th>
+            <th class="text-center">Acciones</th>
         </tr>
     </thead>
     <tbody>
         {% for plan in planes %}
         <tr>
-            <td>{{ plan.nombre }}</td>
-            <td>{{ plan.duracion_meses }}</td>
-            <td>${{ plan.precio }}</td>
+            <td>
+                {{ plan.nombre }}
+            </td>
+            <td class="text-center">
+                <a href="{% url 'plan:detalle' plan.id %}"
+                   class="btn btn-sm btn-info me-1">
+                    Detalle
+                </a>
+
+                <a href="{% url 'plan:editar' plan.id %}"
+                   class="btn btn-sm btn-warning me-1">
+                    Editar
+                </a>
+
+                <a href="{% url 'plan:eliminar' plan.id %}"
+                   class="btn btn-sm btn-danger">
+                    Eliminar
+                </a>
+            </td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="3">No hay planes cargados</td>
+            <td colspan="2" class="text-center">
+                No hay planes cargados
+            </td>
         </tr>
         {% endfor %}
     </tbody>
