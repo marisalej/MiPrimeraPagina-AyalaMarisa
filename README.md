@@ -1,7 +1,7 @@
 # MiPrimeraPagina-AyalaMarisa
-Curso Python Flex - Comision 84995 - Entrega Final (23/01/2026)
+Curso Python Flex - Comision 84995 - Entrega Final (Enero/2026)
 
-Pasos a seguir para completar mi proyecto "IberaGym":
+Esta fue la secuencia de trabajo para mi proyecto "IberaGym":
 
 1) crear repositorio GitHub: https://github.com/marisalej/MiPrimeraPagina-AyalaMarisa.git
 
@@ -39,7 +39,7 @@ Pasos a seguir para completar mi proyecto "IberaGym":
 
 18) crear los templates de cada app para cargar, listar, buscar, actualizar y eliminar registros
 
-19) agregar en el navbar una acceso Acerca de mí
+19) agregar en el navbar un acceso Acerca de mí
 
 20) verificar que .gitignore tenga incluidos a pycache, db.sqlite3, media
 
@@ -48,3 +48,5 @@ Pasos a seguir para completar mi proyecto "IberaGym":
 22) navegar por el proyecto IberaGym usando las vistas definidas
 
 23) luego de verificar que todo funcione hacer los commits y actualizar mi repositorio de GitHub (git push)
+
+24) link al video explicando el funcionamiento de la página web: https://drive.google.com/file/d/1ZOE47bGQ2CNS6pEgJa9u-pDgV4F0KHfj/view
